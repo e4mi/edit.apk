@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
-import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -47,7 +46,6 @@ public class Main extends Activity {
                 editText.setOverScrollMode(View.OVER_SCROLL_ALWAYS);
             }
             editText.setGravity(Gravity.TOP);
-            editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
             layout.addView(editText);
             requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(layout);
