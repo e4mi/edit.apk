@@ -1,0 +1,29 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'e4mi.edit'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'e4mi.edit'
+        minSdk 3
+        //noinspection ExpiredTargetSdkVersion
+        targetSdk 16
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
