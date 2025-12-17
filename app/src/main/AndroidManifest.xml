@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <application android:label="Edit" android:icon="@mipmap/ic_launcher">
-        <activity android:name=".Main" android:exported="true">
+<manifest xmlns:a="http://schemas.android.com/apk/res/android">
+    <application a:label="Edit" a:icon="@mipmap/icon">
+        <activity a:name=".Main" a:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/*" />
+                <action a:name="android.intent.action.VIEW" />
+                <category a:name="android.intent.category.DEFAULT" />
+                <data a:mimeType="text/*" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.EDIT" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/*" />
+                <action a:name="android.intent.action.EDIT" />
+                <category a:name="android.intent.category.DEFAULT" />
+                <data a:mimeType="text/*" />
             </intent-filter>
         </activity>
     </application>

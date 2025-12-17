@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:a="http://schemas.android.com/apk/res/android"
+    a:layout_width="match_parent"
+    a:layout_height="match_parent"
+    a:background="#000"
+    a:fitsSystemWindows="true">
+
+    <EditText
+        a:id="@+id/editText"
+        a:layout_width="match_parent"
+        a:layout_height="match_parent"
+        a:background="@null"
+        a:color="#fff"
+        a:gravity="top"
+        a:hint="content"
+        a:padding="16dp"
+        a:scrollbars="vertical"
+        a:singleLine="false"
+        a:textColor="#fff"
+        a:typeface="monospace" />
+</FrameLayout>

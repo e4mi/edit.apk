@@ -5,11 +5,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
-import android.view.Gravity;
-import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -29,37 +26,22 @@ public class Main extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
-
-            FrameLayout layout = new FrameLayout(this);
-            editText = new EditText(this);
-            editText.setSingleLine(false);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                editText.setBackground(null);
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                editText.setFitsSystemWindows(true);
-            }
-            int padding = (int) (4 * getResources().getDisplayMetrics().density);
-            editText.setPadding(padding, padding, padding, padding);
-            editText.setVerticalScrollBarEnabled(true);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-                editText.setOverScrollMode(View.OVER_SCROLL_ALWAYS);
-            }
-            editText.setGravity(Gravity.TOP);
-            layout.addView(editText);
             requestWindowFeature(Window.FEATURE_NO_TITLE);
-            setContentView(layout);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setNavigationBarColor(0x00000000);
+            }
+            setContentView(R.layout.layout);
+            editText = findViewById(R.id.editText);
 
             Intent intent = getIntent();
             String action = intent.getAction();
             if (!(Intent.ACTION_VIEW.equals(action) || Intent.ACTION_EDIT.equals(action)) || intent.getData() == null) {
-                throw new RuntimeException("NO FILE");
+                throw new Exception("NO FILE");
             }
 
             ParcelFileDescriptor readFile = getContentResolver().openFileDescriptor(intent.getData(), "r");
-
             if (readFile == null) {
-                throw new RuntimeException("COULD NOT OPEN FILE");
+                throw new Exception("NO FILE");
             }
 
             savedText = readFile(readFile);
@@ -102,10 +84,10 @@ public class Main extends Activity {
     }
 
     protected void saveFile() {
-        if (file == null || savedText.equals(editText.getText().toString())) {
-            return;
-        }
         try {
+            if (file == null || savedText.equals(editText.getText().toString())) {
+                return;
+            }
             FileOutputStream outputStream = new FileOutputStream(file.getFileDescriptor());
             FileChannel channel = outputStream.getChannel();
             channel.truncate(0);
